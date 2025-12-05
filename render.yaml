@@ -10,7 +10,8 @@ services:
     # Install dependencies
     buildCommand: "pip install -r requirements.txt"
 
-   startCommand: "gunicorn --pythonpath FRONTEND FRONTEND.wsgi:application --bind 0.0.0.0:$PORT"
+    startCommand: "gunicorn FRONTEND.FRONTEND.wsgi:application"
+
 
     envVars:
       - key: PYTHON_VERSION
