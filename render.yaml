@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: sleep-disorder-app
+    env: python
+    region: singapore
+    runtime: python3
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn FRONTEND.wsgi:application"
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: DJANGO_SETTINGS_MODULE
+        value: FRONTEND.settings
