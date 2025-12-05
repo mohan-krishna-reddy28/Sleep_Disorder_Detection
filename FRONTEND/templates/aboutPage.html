@@ -1,0 +1,306 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NeuroSleep - About</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" /> 
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --body-bg: #ffffff;
+        --body-text: #1e293b;
+        --info-card-bg: #e5e5e5ff;
+        --primary: #1a73e8;
+        --info-card-hover-bg: #2f3031ff;
+      }
+      body.dark {
+        --body-bg: #22334fff;
+        --body-text: #e2e8f0;
+        --info-card-bg: #47556cff;
+        --info-card-hover-bg: #e2e8f0;
+      }
+      body {
+        background-color: var(--body-bg);
+        font-family: "Segoe UI", sans-serif;
+        color: var(--body-text);
+        transition: 0.3s ease-in-out;
+      }
+      .section-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .info-card {
+        background: var(--info-card-bg);
+        padding: 25px;
+        border-radius: 12px;
+        min-height: 100%;
+        transition: 0.3s;
+      }
+      .info-card:hover {
+        box-shadow: 0 0 5px 1px var(--info-card-hover-bg);
+        transform: translateY(-5px);
+      }
+
+      .matrix-img {
+        width: 100%;
+        border-radius: 12px;
+        border: 2px solid var(--primary);
+      }
+
+      .form-detail {
+        background: var(--info-card-bg);
+        border-radius: 12px;
+        padding: 15px;
+      }
+
+      .sub-title {
+        font-weight: 600;
+        color: var(--primary);
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-5 pt-4">
+      <!-- PAGE TITLE -->
+      <h2 class="section-title text-center mb-4">About NeuroSleep System</h2>
+
+      <!-- INTRO SECTION -->
+      <div class="mb-5">
+        <h4 class="sub-title">Project Overview</h4>
+        <p>
+          NeuroSleep is an AI-powered sleep disorder detection system capable of
+          identifying three conditions: <b>Insomnia</b>, <b>Sleep Apnea</b>, and
+          <b>No Disorder</b>. It uses machine learning and deep learning models
+          trained on health and lifestyle data.
+        </p>
+      </div>
+
+      <!-- HOW NEUROSLEEP WORKS -->
+      <div class="container mt-5">
+        <h2
+          class="text-center mb-4 section-title"
+          style="color: var(--primary)"
+        >
+          How NeuroSleep Works
+        </h2>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="p-4 info-card shadow-sm">
+              <h5>1. Enter Your Health & Lifestyle Details</h5>
+              <p>
+                Provide basic information about your sleep duration, stress
+                level, physical activity, heart rate, and other daily habits.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-4 info-card shadow-sm">
+              <h5>2. AI Models Analyze Your Data</h5>
+              <p>
+                Our Machine Learning & Deep Learning models (RF, CNN, LSTM)
+                evaluate your inputs to identify hidden patterns related to
+                Insomnia & Sleep Apnea.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-4 info-card shadow-sm">
+              <h5>3. Get Instant Sleep Disorder Prediction</h5>
+              <p>
+                The system instantly generates your predicted sleep condition
+                along with lifestyle recommendations to improve your sleep
+                health.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONFUSION MATRICES -->
+      <h3 class="section-title fs-3 text-center my-4">
+        Model Performance (Confusion Matrices)
+      </h3>
+
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="info-card">
+            <h5 class="text-center">Random Forest</h5>
+            <img
+              src="{% static 'images/RF_confusion.png' %}"
+              class="matrix-img"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="info-card">
+            <h5 class="text-center">CNN Model</h5>
+            <img
+              src="{% static 'images/CNN_confusion.png' %}"
+              class="matrix-img"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="info-card">
+            <h5 class="text-center">LSTM Model</h5>
+            <img
+              src="{% static 'images/LSTM_confusion.png' %}"
+              class="matrix-img"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- HOW MODELS WORK -->
+      <h3 class="section-title text-center mt-5 mb-4">How the Models Work</h3>
+
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="info-card">
+            <h5 class="sub-title">Random Forest</h5>
+            <p>
+              Random Forest is an ensemble learning model that builds multiple
+              decision trees and combines their outputs. It performs extremely
+              well for tabular data and is the most accurate model for this
+              dataset (96% accuracy).
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="info-card">
+            <h5 class="sub-title">CNN (Convolutional Neural Network)</h5>
+            <p>
+              CNNs extract patterns using convolutional filters and are powerful
+              for feature learning. In NeuroSleep, CNN learns relationships
+              between multiple health indicators to classify sleep disorders.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="info-card">
+            <h5 class="sub-title">LSTM (Long Short-Term Memory)</h5>
+            <p>
+              LSTM is designed for sequential data and time dependencies. In
+              NeuroSleep, it captures patterns in sequential-like health metrics
+              to detect disorders.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM INPUT DETAILS -->
+      <h3 class="section-title text-center mt-5 mb-4">
+        Form Input Requirements
+      </h3>
+
+      <div class="form-detail mb-5">
+        <ul>
+          <li>
+            <b>Age (Number)</b> – Expected as a numeric value (e.g., 18–80).
+            Sleep patterns strongly vary with age.
+          </li>
+
+          <li>
+            <b>Gender (Male/Female)</b> – Encoded internally as numeric labels.
+            Required because sleep disorders affect genders differently.
+          </li>
+
+          <li>
+            <b>Occupation (Category)</b> – Converted to encoded numeric form.
+            Helps the model understand lifestyle-based stress.
+          </li>
+
+          <li>
+            <b>Sleep Duration (Hours, Number)</b> – Model expects values like
+            4.0–10.0 hours.
+          </li>
+
+          <li>
+            <b>Quality of Sleep (1–10)</b> – User rating; higher values mean
+            better sleep.
+          </li>
+
+          <li>
+            <b>Physical Activity Level (1–100)</b> – Higher activity levels
+            generally improve sleep.
+          </li>
+
+          <li>
+            <b>Stress Level (1–10)</b> – Higher values indicate more stress,
+            affecting sleep quality.
+          </li>
+
+          <li>
+            <b>BMI Category (Underweight / Normal / Overweight / Obese)</b> –
+            Internally converted to numeric labels. Obesity strongly correlates
+            with Sleep Apnea.
+          </li>
+
+          <li>
+            <b>Systolic Blood Pressure (Number)</b> – Model expects the upper BP
+            value (e.g., 110–160).
+          </li>
+
+          <li>
+            <b>Diastolic Blood Pressure (Number)</b> – Model expects the lower
+            BP value (e.g., 70–100).
+          </li>
+
+          <li>
+            <b>Heart Rate (BPM, Number)</b> – Typically ranges from 60–110
+            during rest. Higher rates may indicate stress or poor sleep.
+          </li>
+
+          <li>
+            <b>Daily Steps (Number)</b> – Indicates physical movement; affects
+            sleep patterns.
+          </li>
+
+          <li>
+            <b>Model Type (RF / CNN / LSTM)</b> – Lets user choose prediction
+            model. RF = Best accuracy, CNN = Deep learning patterns, LSTM =
+            Sequential analysis.
+          </li>
+        </ul>
+      </div>
+
+      <p class="text-end mt-4">
+        <a href="{% url 'input' %}" class="btn btn-primary"
+          >Go to Prediction Form</a
+        >
+      </p>
+    </div>
+  </body>
+</html>

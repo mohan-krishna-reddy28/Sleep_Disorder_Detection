@@ -1,0 +1,7 @@
+Django==5.0
+gunicorn
+numpy
+joblib
+tensorflow==2.12
+scikit-learn
+pillow

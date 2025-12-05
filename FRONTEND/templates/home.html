@@ -1,0 +1,409 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NeuroSleep - Home</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --body-bg: #ffffff;
+        --body-text: #1e293b;
+        --info-card-bg: #e5e5e5ff;
+        --primary: #1a73e8;
+        --info-card-hover-bg: #2f3031ff;
+      }
+      body.dark {
+        --body-bg: #22334fff;
+        --body-text: #e2e8f0;
+        --info-card-bg: #47556cff;
+        --info-card-hover-bg: #e2e8f0;
+      }
+      .helps-info-card {
+        background: var(--info-card-bg);
+        border-radius: 12px;
+        padding: 15px;
+        min-height: 100%;
+      }
+      body {
+        background-color: var(--body-bg);
+        font-family: "Segoe UI", sans-serif;
+        color: var(--body-text);
+        transition: 0.3s ease-in-out;
+      }
+
+      .hero-section {
+        padding-top: 80px;
+      }
+
+      .hero-title {
+        font-size: 42px;
+        font-weight: 700;
+        color: #1a73e8;
+      }
+
+      .hero-text {
+        font-size: 18px;
+        opacity: 0.75;
+      }
+
+      .normal-box {
+        background-color: var(--info-card-bg);
+        border-radius: 12px;
+        transition: 0.3s;
+        min-height: 100%;
+      }
+
+      .info-card {
+        background-color: var(--info-card-bg);
+        border-radius: 12px;
+        transition: 0.3s;
+      }
+      .info-card:hover {
+        box-shadow: 0 0 5px 1px var(--info-card-hover-bg);
+        transform: translateY(-5px);
+      }
+
+      /* -------------- MOBILE RESPONSIVE DESIGN -------------- */
+      @media (max-width: 768px) {
+        /* Reduce page padding */
+        .container {
+          padding-left: 10px !important;
+          padding-right: 10px !important;
+          margin: 20px 0 !important;
+          min-width: 100% !important;
+        }
+
+        /* Hero section mobile layout */
+        .hero-section {
+          text-align: center;
+          padding-top: 40px;
+        }
+
+        .hero-title {
+          font-size: 28px !important;
+          line-height: 1.3;
+        }
+
+        .hero-text {
+          font-size: 14px;
+          opacity: 0.9;
+        }
+
+        .hero-section img {
+          width: 90%;
+          margin-top: 20px;
+        }
+
+        /* Info cards spacing */
+        .info-card,
+        .normal-box,
+        .helps-info-card {
+          padding: 15px !important;
+          margin-bottom: 10px;
+        }
+
+        h5 {
+          font-size: 18px;
+        }
+
+        /* Reduce list spacing */
+        ul {
+          padding-left: 18px;
+        }
+
+        ul li {
+          margin-bottom: 6px;
+          font-size: 14px;
+        }
+
+        /* Reducing extra margin between sections */
+        .mt-5 {
+          margin-top: 2rem !important;
+        }
+
+        .mb-5 {
+          margin-bottom: 2rem !important;
+        }
+
+        .text-center.mb-4 {
+          margin-bottom: 1.5rem !important;
+        }
+
+        /* Make columns stack better */
+        .row.g-4 {
+          row-gap: 1.2rem !important;
+        }
+
+        /* Icons resizing */
+        .info-card img {
+          width: 32px !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}
+
+    <!-- HERO SECTION -->
+    <div class="container hero-section">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="hero-title">Monitor Sleep. Detect Disorders.</h1>
+          <p class="hero-text mt-3">
+            NeuroSleep helps identify Insomnia, Sleep Apnea, and No-Disorder
+            conditions using advanced Machine Learning and Deep Learning models.
+          </p>
+
+          <a href="{% url 'input' %}" class="btn btn-primary btn-lg mt-4">
+            Start Prediction
+          </a>
+        </div>
+
+        <div class="col-md-6 text-center d-none d-md-block">
+          <img
+            src="{% static 'images/sleepIllustration2.png' %}"
+            class="img-fluid"
+            alt="Sleep Illustration"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- SYMPTOMS OF COMMON SLEEP DISORDERS -->
+    <div class="container mt-5 mx-md-5">
+      <h2
+        class="text-center mb-4"
+        style="color: var(--primary); font-weight: 700"
+      >
+        Symptoms of Common Sleep Disorders
+      </h2>
+
+      <div class="row g-4">
+        <!-- Insomnia -->
+        <div class="col-md-6">
+          <div class="p-4 normal-box shadow-sm">
+            <h5>Insomnia</h5>
+            <ul>
+              <li>Difficulty falling asleep</li>
+              <li>Frequent night awakenings</li>
+              <li>Waking up too early</li>
+              <li>Daytime sleepiness & fatigue</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sleep Apnea -->
+        <div class="col-md-6">
+          <div class="p-4 normal-box shadow-sm">
+            <h5>Sleep Apnea</h5>
+            <ul>
+              <li>Loud snoring</li>
+              <li>Pauses in breathing during sleep</li>
+              <li>Morning headaches</li>
+              <li>Daytime tiredness & poor concentration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXTRA INFORMATION SECTION -->
+    <div class="container mt-5 mx-md-5 px-4">
+      <h3
+        class="text-center mb-4"
+        style="color: var(--primary); font-weight: 700"
+      >
+        Why Sleep Monitoring Matters?
+      </h3>
+
+      <div class="row g-4">
+        <!-- Point 1 -->
+        <div class="col-md-4">
+          <div class="p-4 info-card h-100">
+            <div class="d-flex align-items-center mb-2">
+              <img
+                src="{% static 'images/brain_icon.png' %}"
+                width="40"
+                class="me-3"
+              />
+              <h5 class="m-0" style="color: var(--primary)">Brain Health</h5>
+            </div>
+            <p>
+              Quality sleep improves memory, learning, and emotional stability.
+              Monitoring helps detect patterns affecting mental performance.
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 2 -->
+        <div class="col-md-4">
+          <div class="p-4 info-card h-100">
+            <div class="d-flex align-items-center mb-2">
+              <img
+                src="{% static 'images/health_icon.png' %}"
+                width="40"
+                class="me-3"
+              />
+              <h5 class="m-0" style="color: var(--primary)">
+                Prevent Health Risks
+              </h5>
+            </div>
+            <p>
+              Sleep disorders can lead to hypertension, diabetes, and heart
+              conditions. Early detection helps avoid long-term complications.
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 3 -->
+        <div class="col-md-4">
+          <div class="p-4 info-card h-100">
+            <div class="d-flex align-items-center mb-2">
+              <img
+                src="{% static 'images/monitor_icon.png' %}"
+                width="40"
+                class="me-3"
+              />
+              <h5 class="m-0" style="color: var(--primary)">
+                Continuous Monitoring
+              </h5>
+            </div>
+            <p>
+              With AI-based systems like NeuroSleep, continuous sleep analysis
+              provides insights and improves the accuracy of diagnosis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW NEUROSLEEP HELPS YOU -->
+    <div class="container my-5 mx-md-5 px-4">
+      <h2
+        class="text-center mb-4"
+        style="color: var(--primary); font-weight: 700"
+      >
+        How NeuroSleep Helps You
+      </h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-4 helps-info-card">
+            <h5>Early Detection of Disorders</h5>
+            <p>
+              NeuroSleep detects early signs of Insomnia, Sleep Apnea, and sleep
+              irregularities before they become serious health risks.
+              Identifying these issues early helps prevent chronic fatigue,
+              heart problems, and decreased cognitive performance.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 helps-info-card">
+            <h5>Understand Your Sleep Patterns</h5>
+            <p>
+              Our system analyzes factors like sleep duration, stress, activity
+              level, heart rate, and blood pressure to give clear insights into
+              what affects your sleep quality.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 helps-info-card">
+            <h5>AI-Driven Health Insights</h5>
+            <p>
+              Using advanced ML and DL models (Random Forest, CNN, LSTM),
+              NeuroSleep provides accurate predictions and personalized
+              recommendations to improve sleep health.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 helps-info-card">
+            <h5>Improve Daily Performance</h5>
+            <p>
+              Good sleep enhances memory, focus, mood, and productivity.
+              Monitoring sleep patterns helps you make better decisions for a
+              healthier mind and body.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIPS FOR BETTER SLEEP -->
+    <div class="container my-5 mx-md-5 px-4">
+      <h2
+        class="text-center mb-4"
+        style="color: var(--primary); font-weight: 700"
+      >
+        Tips for Better Sleep
+      </h2>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 normal-box shadow-sm">
+            <h5>Improve Your Sleep Routine</h5>
+            <ul>
+              <li>Maintain a consistent sleep schedule</li>
+              <li>Avoid caffeine after evening</li>
+              <li>Reduce screen time before bed</li>
+              <li>Keep your room dark & quiet</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4 normal-box shadow-sm">
+            <h5>Stay Physically Active</h5>
+            <ul>
+              <li>Exercise at least 30 minutes daily</li>
+              <li>Avoid heavy meals before bedtime</li>
+              <li>Walk regularly to reduce stress</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4 normal-box shadow-sm">
+            <h5>Manage Stress & Mind</h5>
+            <ul>
+              <li>Practice deep breathing</li>
+              <li>Try meditation or yoga</li>
+              <li>Reduce nighttime anxiety</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>

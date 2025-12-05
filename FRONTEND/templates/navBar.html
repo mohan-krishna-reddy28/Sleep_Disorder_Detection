@@ -1,0 +1,159 @@
+{% load static %}
+
+<style>
+  :root {
+    --nav-bg: #ffffff;
+    --nav-text: #1e293b;
+    --primary: #1a73e8;
+  }
+
+  body.dark {
+    --nav-bg: #1e293b;
+    --nav-text: #e2e8f0;
+  }
+
+  nav.custom-nav {
+    background-color: var(--nav-bg) !important;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  nav.custom-nav a {
+    font-weight: 500;
+    color: var(--nav-text);
+  }
+
+  .navbar-brand span {
+    color: var(--nav-text) !important;
+  }
+
+  .theme-toggle {
+    width: 50px;
+    height: 26px;
+    background: var(--nav-text);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .theme-circle {
+    width: 22px;
+    height: 22px;
+    background: var(--nav-bg);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    transition: 0.3s;
+  }
+
+  body.dark .theme-circle {
+    transform: translateX(24px);
+  }
+
+  .active-link {
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid var(--primary);
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg custom-nav fixed-top py-2 shadow-md">
+  <div class="container">
+    
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+      <img
+        id="theme-logo"
+        src="{% static 'images/logo_dark.png' %}"
+        width="125"
+        height="35"
+        alt="NeuroSleep Logo"
+      />
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navMenu"
+      aria-controls="navMenu"
+      aria-expanded="true"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Navbar Section -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto d-flex align-items-center gap-3 flex-row justify-content-space-between">
+
+        <!-- HOME -->
+        <li class="nav-item mb-2">
+          <a class="nav-link {% if request.path == '/home/' or request.path == '/input/' or request.path == '/output/' %}active-link{% endif %}"
+             href="{% url 'home' %}">
+             Home
+          </a>
+        </li>
+
+        <!-- ABOUT -->
+        <li class="nav-item mb-2">
+          <a class="nav-link {% if request.path == '/about/' %}active-link{% endif %}"
+             href="{% url 'about' %}">
+             About
+          </a>
+        </li>
+
+        <!-- THEME TOGGLE -->
+        <li class="nav-item">
+          <div class="theme-toggle" onclick="toggleTheme()">
+            <div class="theme-circle"></div>
+          </div>
+        </li>
+
+        <!-- LOGOUT BUTTON -->
+        <li class="nav-item">
+          <a href="{% url 'logout' %}"
+             class="btn btn-danger text-white w-100 py-2 logout-btn">
+             Logout
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<script>
+  // Load saved theme
+  document.addEventListener("DOMContentLoaded", function () {
+    let theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      document.body.classList.add("dark");
+      document.getElementById("theme-logo").src =
+        "{% static 'images/logo_light.png' %}";
+    } else {
+      document.getElementById("theme-logo").src =
+        "{% static 'images/logo_dark.png' %}";
+    }
+  });
+
+  // Toggle theme
+  function toggleTheme() {
+    let body = document.body;
+    let logo = document.getElementById("theme-logo");
+
+    body.classList.toggle("dark");
+
+    if (body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      logo.src = "{% static 'images/logo_light.png' %}";
+    } else {
+      localStorage.setItem("theme", "light");
+      logo.src = "{% static 'images/logo_dark.png' %}";
+    }
+  }
+</script>

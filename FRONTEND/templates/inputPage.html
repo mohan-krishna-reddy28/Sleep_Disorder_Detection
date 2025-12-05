@@ -1,0 +1,283 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NeuroSleep - Prediction Input</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --body-bg: #ffffff;
+        --body-text: #1e293b;
+        --card-bg: #e5e5e5ff;
+        --primary: #1a73e8;
+      }
+      body.dark {
+        --body-bg: #22334fff;
+        --body-text: #e2e8f0;
+        --card-bg: #47556cff;
+      }
+      .text-muted {
+        color: var(--body-text) !important;
+      }
+      body {
+        background-color: var(--body-bg);
+        font-family: "Segoe UI", sans-serif;
+        color: var(--body-text);
+        transition: 0.3s ease-in-out;
+      }
+
+      .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      input {
+        outline: none;
+      }
+
+      .form-card {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-label {
+        font-weight: 600;
+      }
+      .heart-form-control {
+        width: 80px;
+        height: 30px;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+      .illustration-img {
+        max-width: 80%;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-5 pt-4">
+      <!-- Page Title -->
+      <h2 class="page-title text-center mb-4">
+        Sleep Disorder Prediction Form
+      </h2>
+
+      <div class="row g-4">
+        <!-- Illustration -->
+        <div class="col-md-6 text-center d-none d-md-block">
+          <img
+            src="{% static 'images/sleep_form_illustration.png' %}"
+            class="illustration-img"
+            alt="Sleep Form Illustration"
+          />
+        </div>
+
+        <!-- Form Section -->
+        <div class="col-md-6">
+          <div class="form-card my-5">
+            <form action="{% url 'output' %}" method="POST">
+              {% csrf_token %}
+
+              <!-- Age -->
+              <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input type="number" class="form-control" name="Age" required />
+              </div>
+
+              <!-- Gender -->
+              <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <select class="form-select" name="Gender" required>
+                  <option value="">Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Occupation</label>
+                <select
+                  class="form-select"
+                  name="Occupation"
+                  placeholder="Select Occupation"
+                  required
+                >
+                  <option value="0">Accountant</option>
+                  <option value="1">Doctor</option>
+                  <option value="2">Engineer</option>
+                  <option value="3">Lawyer</option>
+                  <option value="4">Manager</option>
+                  <option value="5">Nurse</option>
+                  <option value="6">Sales Representative</option>
+                  <option value="7">SalesPerson</option>
+                  <option value="8">Scientist</option>
+                  <option value="9">Software Engineer</option>
+                  <option value="10">Teacher</option>
+                </select>
+              </div>
+
+              <!-- Sleep Duration -->
+              <div class="mb-3">
+                <label class="form-label">Sleep Duration (Hours)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  class="form-control"
+                  name="SleepDuration"
+                  required
+                />
+              </div>
+
+              <!-- Quality of Sleep -->
+              <div class="mb-3">
+                <label class="form-label">Quality of Sleep (1–10)</label>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  class="form-control"
+                  name="QualitySleep"
+                  required
+                />
+              </div>
+
+              <!-- Physical Activity Level -->
+              <div class="mb-3">
+                <label class="form-label"
+                  >Physical Activity Level (1–100)</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  name="Activity"
+                  required
+                />
+              </div>
+
+              <!-- Stress Level -->
+              <div class="mb-3">
+                <label class="form-label">Stress Level (1–10)</label>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  class="form-control"
+                  name="Stress"
+                  required
+                />
+              </div>
+
+              <!-- BMI Category -->
+              <div class="mb-3">
+                <label class="form-label">BMI Category</label>
+                <select class="form-select" name="BMI" required>
+                  <option value="">Select</option>
+                  <option value="0">Normal</option>
+                  <option value="3">Overweight</option>
+                  <option value="2">Obese</option>
+                  <option value="1">Underweight</option>
+                </select>
+              </div>
+
+              <!-- Blood Pressure -->
+              <div class="mb-3">
+                <label class="form-label"
+                  >Blood Pressure (Systolic / Diastolic)</label
+                >
+                <div class="d-flex align-items-center gap-2">
+                  <input
+                    type="number"
+                    name="Systolic"
+                    class="form-control"
+                    placeholder="120"
+                    required
+                    style="width: 100px"
+                  />
+
+                  <span>/</span>
+
+                  <input
+                    type="number"
+                    name="Diastolic"
+                    class="form-control"
+                    placeholder="80"
+                    required
+                    style="width: 100px"
+                  />
+                </div>
+              </div>
+              <!-- Heart Rate -->
+              <div class="mb-3">
+                <label class="form-label">Heart Rate (BPM)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="HeartRate"
+                  required
+                />
+              </div>
+
+              <!-- Daily Steps -->
+              <div class="mb-3">
+                <label class="form-label">Daily Steps</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="Steps"
+                  required
+                />
+              </div>
+              <!-- Model Selection -->
+              <div class="mb-3">
+                <label class="form-label">Select Prediction Model</label>
+                <select class="form-select" name="ModelType" required>
+                  <option value="">Choose Model</option>
+                  <option value="RF">
+                    Random Forest (Recommended - 96% accuracy)
+                  </option>
+                  <option value="CNN">CNN</option>
+                  <option value="LSTM">LSTM</option>
+                </select>
+
+                <small class="text-muted">
+                  Recommended: <strong>Random Forest</strong>
+                </small>
+              </div>
+
+              <button class="btn btn-primary w-100 mt-3" type="submit">
+                Predict Disorder
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

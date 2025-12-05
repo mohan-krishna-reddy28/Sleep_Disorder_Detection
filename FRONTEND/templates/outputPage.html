@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Prediction Result - NeuroSleep</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --body-bg: #ffffff;
+        --body-text: #1e293b;
+        --shadow-color: rgba(71, 69, 69, 0.56);
+        --card-bg: #f5f5f5ff;
+      }
+      body.dark {
+        --body-bg: #22334fff;
+        --body-text: #e2e8f0;
+        --shadow-color: rgb(24, 24, 24);
+        --card-bg: #47556cff;
+      }
+      body {
+        background-color: var(--body-bg);
+        font-family: "Segoe UI", sans-serif;
+        color: var(--body-text);
+        transition: 0.3s ease-in-out;
+      }
+
+      .result-card {
+        background: var(--card-bg);
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 18px var(--shadow-color);
+        text-align: center;
+      }
+
+      .result-title {
+        font-size: 34px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .model-used {
+        font-size: 16px;
+        opacity: 0.75;
+        margin-top: -10px;
+      }
+
+      .precaution-card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px var(--shadow-color);
+      }
+
+      .precaution-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .tips-list {
+        list-style-type: none;
+        padding-left: 10px;
+      }
+      .tips:before {
+        content: "⭐";
+      }
+      .tips {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-5 pt-5">
+      <!-- RESULT CARD -->
+      <div class="result-card mb-4">
+        <h2 class="result-title">Prediction Result</h2>
+
+        <h3 class="my-3 text-warning">{{ disorder }}</h3>
+
+        <p class="model-used">Model Used: <b>{{ model_used }}</b></p>
+
+        {% if confidence %}
+        <p class="mt-2">Confidence: <b>{{ confidence }}%</b></p>
+        {% endif %}
+      </div>
+
+      <!-- PRECAUTIONS SECTION -->
+      <div class="precaution-card mt-4">
+        <h4 class="precaution-title">Recommended Precautions</h4>
+        <ul class="mt-2 tips-list">
+          {% for tip in tips %}
+          <li class="tips">{{ tip }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="text-end mt-4">
+        <a href="{% url 'input' %}" class="btn btn-primary">Predict Again</a>
+      </div>
+    </div>
+  </body>
+</html>
