@@ -5,7 +5,7 @@ services:
     region: singapore
     runtime: python3
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn FRONTEND.wsgi:application"
+    startCommand: "cd FRONTEND && gunicorn FRONTEND.wsgi:application"
     plan: free
     autoDeploy: true
     envVars:
