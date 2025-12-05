@@ -11,7 +11,7 @@ services:
     buildCommand: "pip install -r requirements.txt"
 
     # Start Gunicorn from inside FRONTEND folder
-    startCommand: "cd FRONTEND && gunicorn FRONTEND.wsgi:application --bind 0.0.0.0:$PORT --workers 1"
+    startCommand: "gunicorn --chdir FRONTEND FRONTEND.wsgi:application --bind 0.0.0.0:$PORT"
 
     envVars:
       - key: PYTHON_VERSION
