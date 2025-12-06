@@ -3,7 +3,7 @@ from django.conf import settings
 import os
 import joblib
 import numpy as np
-import tensorflow.lite as tflite   
+from tflite_runtime.interpreter import Interpreter 
 
 
 BASE_DIR = settings.BASE_DIR
@@ -18,10 +18,11 @@ bmi_encoder = joblib.load(os.path.join(BACKEND_PATH, "bmi_encoder.pkl"))
 target_encoder = joblib.load(os.path.join(BACKEND_PATH, "target_encoder.pkl"))
 
 
-cnn_interpreter = tflite.Interpreter(
+cnn_interpreter = Interpreter(
     model_path=os.path.join(BACKEND_PATH, "CNN_Sleep_quantized.tflite")
 )
 cnn_interpreter.allocate_tensors()
+
 
 # lstm_interpreter = tflite.Interpreter(
 #     model_path=os.path.join(BACKEND_PATH, "LSTM_Sleep_quantized.tflite")
