@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "sleep_app", 
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "FRONTEND.wsgi.application"
+WSGI_APPLICATION = "FRONTEND.FRONTEND.wsgi.application"
 
 
 # Database
