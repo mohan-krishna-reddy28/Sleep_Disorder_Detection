@@ -2,14 +2,18 @@ services:
   - type: web
     name: sleep-disorder-app
     env: python
-    region: singapore
-    runtime: python3
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn FRONTEND.FRONTEND.wsgi:application"
+    region: oregon
     plan: free
+    runtime: python3
+
+    # Build from the repository root
+    buildCommand: "pip install -r requirements.txt"
+
+    # Start Django inside FRONTEND
+    startCommand: "gunicorn FRONTEND.wsgi:application"
+
     autoDeploy: true
+
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.6
-      - key: DJANGO_SETTINGS_MODULE
-        value: FRONTEND.FRONTEND.settings
+      PYTHON_VERSION: 3.11.6
+      DJANGO_SETTINGS_MODULE: FRONTEND.settings
