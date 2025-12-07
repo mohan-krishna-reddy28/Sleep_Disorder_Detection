@@ -108,15 +108,27 @@ USE_TZ = True
 # STATIC FILES (CSS, JS, Images)
 # Works on Local + Render
 # ---------------------------------------------------------
+# ---------------------------------------------------------
+# STATIC FILES (CSS, JS, Images)
+# ---------------------------------------------------------
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
-    PROJECT_ROOT / "sleep_app" / "static",  # global/static inside app
+    PROJECT_ROOT / "static", # <--- **FIX 1: Add the top-level static directory**
+    PROJECT_ROOT / "sleep_app" / "static", # Keep if you have app-specific static files
 ]
 
-STATIC_ROOT = PROJECT_ROOT / "staticfiles"  # Render will collect files here
+STATIC_ROOT = PROJECT_ROOT / "staticfiles"
 
 # ---------------------------------------------------------
 # DEFAULT FIELD TYPE
 # ---------------------------------------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# ... other settings ...
+
+# ---------------------------------------------------------
+# STATIC FILES (CSS, JS, Images)
+# ---------------------------------------------------------
+# ... existing STATIC_URL, STATICFILES_DIRS, STATIC_ROOT ...
+
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage" # Add this line
