@@ -6,14 +6,15 @@ services:
     plan: free
     runtime: python3
 
-    # Build from the repository root
+    # Render must run inside Sleep_disorder directory
+    workingDirectory: .
+
     buildCommand: "pip install -r requirements.txt"
 
-    # Start Django inside FRONTEND
     startCommand: "gunicorn FRONTEND.wsgi:application"
 
     autoDeploy: true
 
     envVars:
-      PYTHON_VERSION: 3.11.6
+      PYTHON_VERSION: 3.10.12
       DJANGO_SETTINGS_MODULE: FRONTEND.settings
