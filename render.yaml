@@ -16,5 +16,5 @@ services:
     autoDeploy: true
 
     envVars:
-      PYTHON_VERSION: 3.10.12
+      PYTHON_VERSION: 3.10.11
       DJANGO_SETTINGS_MODULE: FRONTEND.settings
