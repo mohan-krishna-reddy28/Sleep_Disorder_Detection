@@ -12,25 +12,23 @@ from model_loader import get_model, predict_tflite, IS_WINDOWS
 # --------------------------------------------------
 
 def login_user(request):
-    if request.method == "POST":
-        name = request.POST.get("name").strip()
-        password = request.POST.get("password").strip()
+    name = request.POST.get("name").strip()
+    password = request.POST.get("password").strip()
 
-        account_file = settings.BASE_DIR.parent / "BACKEND" / "account.txt"
+    account_file = settings.BASE_DIR.parent / "BACKEND" / "account.txt"
 
-        users = []
-        with open(account_file, "r") as file:
-            for line in file:
-                u, p = line.strip().split()
-                users.append((u.lower(), p.strip()))
+    users = []
+    with open(account_file, "r") as file:
+        for line in file:
+            u, p = line.strip().split()
+            users.append((u.lower(), p.strip()))
 
-        for user, pwd in users:
-            if user == name and pwd == password:
-                return redirect("home")
+    for user, pwd in users:
+        if user == name and pwd == password:
+            return redirect("home")
 
-        return render(request, "loginpage.html", {"error": "Invalid credentials"})
+    return render(request, "loginpage.html", {"error": "Invalid credentials"})
 
-    return render(request, "loginpage.html")
 
 
 def logout_user(request):
