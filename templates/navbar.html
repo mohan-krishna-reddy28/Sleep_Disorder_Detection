@@ -66,7 +66,7 @@
     <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
       <img
         id="theme-logo"
-        src="{% static 'images/logo_dark.png' %}"
+        src="https://res.cloudinary.com/dyfu3aiar/image/upload/v1765106562/logo_dark_otdkhh.png"
         width="125"
         height="35"
         alt="NeuroSleep Logo"
@@ -134,10 +134,10 @@
     if (theme === "dark") {
       document.body.classList.add("dark");
       document.getElementById("theme-logo").src =
-        "{% static 'images/logo_light.png' %}";
+        "https://res.cloudinary.com/dyfu3aiar/image/upload/v1765106562/logo_light_afef9b.png";
     } else {
       document.getElementById("theme-logo").src =
-        "{% static 'images/logo_dark.png' %}";
+        "https://res.cloudinary.com/dyfu3aiar/image/upload/v1765106562/logo_dark_otdkhh.png";
     }
   });
 
@@ -150,10 +150,10 @@
 
     if (body.classList.contains("dark")) {
       localStorage.setItem("theme", "dark");
-      logo.src = "{% static 'images/logo_light.png' %}";
+      logo.src = "https://res.cloudinary.com/dyfu3aiar/image/upload/v1765106562/logo_light_afef9b.png";
     } else {
       localStorage.setItem("theme", "light");
-      logo.src = "{% static 'images/logo_dark.png' %}";
+      logo.src = "https://res.cloudinary.com/dyfu3aiar/image/upload/v1765106562/logo_dark_otdkhh.png";
     }
   }
 </script>
