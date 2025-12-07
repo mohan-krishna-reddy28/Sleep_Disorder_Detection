@@ -9,9 +9,9 @@ import sys
 # ---------------------------------------------------------
 # BASE DIRECTORY SETTINGS
 # ---------------------------------------------------------
-BASE_DIR = Path(__file__).resolve().parent     # Sleep_disorder/FRONTEND
-PROJECT_ROOT = BASE_DIR.parent                        # Sleep_disorder/
-BACKEND_DIR = PROJECT_ROOT / "BACKEND"                # Sleep_disorder/BACKEND
+BASE_DIR = Path(__file__).resolve().parent    # Path to FRONTEND folder
+PROJECT_ROOT = BASE_DIR.parent                # Path to Sleep_disorder folder
+BACKEND_DIR = PROJECT_ROOT / "BACKEND"         # Path to BACKEND folder 
 
 # Make BACKEND importable (for model_loader.py)
 sys.path.append(str(BACKEND_DIR))
