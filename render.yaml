@@ -9,7 +9,10 @@ services:
     # Render must run inside Sleep_disorder directory
     workingDirectory: .
 
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: |
+      pip install -r requirements.txt
+      mkdir -p staticfiles
+      python manage.py collectstatic --noinput
 
     startCommand: "gunicorn FRONTEND.wsgi:application"
 
