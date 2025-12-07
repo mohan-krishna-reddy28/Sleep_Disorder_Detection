@@ -13,7 +13,7 @@ from model_loader import get_model, predict_tflite, IS_WINDOWS
 
 def login_user(request):
     if request.method == "POST":
-        name = request.POST.get("name").strip().lower()
+        name = request.POST.get("name").strip()
         password = request.POST.get("password").strip()
 
         account_file = settings.BASE_DIR.parent / "BACKEND" / "account.txt"
@@ -28,9 +28,9 @@ def login_user(request):
             if user == name and pwd == password:
                 return redirect("home")
 
-        return render(request, "loginPage.html", {"error": "Invalid credentials"})
+        return render(request, "loginpage.html", {"error": "Invalid credentials"})
 
-    return render(request, "loginPage.html")
+    return render(request, "loginpage.html")
 
 
 def logout_user(request):
@@ -46,13 +46,10 @@ def home_page(request):
     return render(request, "home.html")
 
 def input_page(request):
-    return render(request, "inputPage.html")
+    return render(request, "inputpage.html")
 
 def about_page(request):
-    return render(request, "aboutPage.html")
-
-def team_page(request):
-    return render(request, "teamPage.html")
+    return render(request, "aboutpage.html")
 
 
 # --------------------------------------------------
@@ -180,10 +177,10 @@ def predict_output(request):
 
         tips = precautions.get(disorder, [])
 
-        return render(request, "outputPage.html", {
+        return render(request, "outputpage.html", {
             "disorder": disorder,
             "model_used": model_used,
             "tips": tips
         })
 
-    return render(request, "outputPage.html")
+    return render(request, "outputpage.html")
