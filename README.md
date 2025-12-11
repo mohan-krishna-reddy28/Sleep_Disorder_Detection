@@ -1,19 +1,27 @@
-Deployment Notice (Render)
+# 😴 Sleep Disorder Detection & Classification using Deep Learning
 
-This application is deployed on Render (Free Tier).
-Because free instances automatically go to sleep after periods of inactivity, the server may take 30–60 seconds to start up again.
+A real-time sleep disorder detection and classification system built using **Deep Learning (CNN + LSTM)** and deployed through a **Django web application**.  
+The model analyzes sleep data and predicts disorders such as **Sleep Apnea, Insomnia, Narcolepsy**, and other abnormal sleep patterns.
 
-⏳ If the app seems slow or doesn’t load immediately:
+This project was developed as part of the **B.Tech Final Year Project** at  
+📍 *Sri Venkateswara College of Engineering, Tirupati*  
+---
 
-Please wait a few moments for Render to wake up the backend service.
-This is expected behavior for free deployments.
+## 🌐 Live Demo (Render Deployment Notice)
 
-🔐 Login Credentials (For Testing)
+The project’s backend is hosted on **Render.com (Free Tier)**.  
+Free-tier instances automatically sleep after inactivity.
 
-Use the following credentials to log in:
+⏳ **If the app is slow to load or takes time to respond:**
 
-Username: rahul
-Password: rahul@2021
+👉 Please wait **30–60 seconds** for Render to wake up the server.  
+This delay is normal for free-tier deployments.
 
+---
 
-These credentials are provided only for demonstration and testing purposes.
+## 🔐 Login Credentials (Demo)
+
+Use the following credentials to access the application dashboard:
+## Username: admin
+## Password: admin123
+> These credentials are for demo/testing purposes only.
